@@ -1,0 +1,4 @@
+[package]
+name = "nugine-rust-utils"
+version = "0.1.0-dev"
+edition = "2021"
