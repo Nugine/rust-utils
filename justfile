@@ -12,7 +12,7 @@ doc:
     cargo doc --no-deps --open
 
 sync-version:
-    cargo set-version -p nugine-rust-utils 0.1.0
+    cargo set-version -p nugine-rust-utils      0.1.1-dev
 
 publish:
     cargo publish -p nugine-rust-utils
