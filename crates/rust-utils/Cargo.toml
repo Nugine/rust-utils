@@ -2,3 +2,11 @@
 name = "nugine-rust-utils"
 version = "0.1.0-dev"
 edition = "2021"
+
+[lib]
+name = "rust_utils"
+
+[features]
+default = []
+std = ["alloc"]
+alloc = []

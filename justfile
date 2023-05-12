@@ -1,7 +1,12 @@
 dev:
     cargo fmt
     cargo clippy
-    cargo test
+    just test
+
+test:
+    cargo test -p nugine-rust-utils
+    cargo test -p nugine-rust-utils --features alloc
+    cargo test -p nugine-rust-utils --features std
 
 doc:
     cargo doc --no-deps --open
