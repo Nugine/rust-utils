@@ -52,3 +52,11 @@ pub fn string_from_utf8(bytes: Vec<u8>) -> Option<String> {
     let is_utf8 = simdutf8::basic::from_utf8(&bytes).is_ok();
     is_utf8.then(|| unsafe { String::from_utf8_unchecked(bytes) })
 }
+
+pub fn cast_ptr<T: ?Sized, U>(p: &T) -> *const U {
+    <*const T>::cast(p)
+}
+
+pub fn cast_ptr_mut<T: ?Sized, U>(p: &mut T) -> *mut U {
+    <*mut T>::cast(p)
+}
