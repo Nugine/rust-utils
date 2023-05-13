@@ -13,3 +13,7 @@ name = "rust_utils"
 default = []
 std = ["alloc"]
 alloc = []
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
