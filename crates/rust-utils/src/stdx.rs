@@ -1,5 +1,9 @@
 #[cfg(feature = "alloc")]
-use alloc::vec::Vec;
+cfg_group! {
+    use alloc::vec::Vec;
+    use alloc::boxed::Box;
+    use core::mem::MaybeUninit;
+}
 
 #[cfg(all(feature = "alloc", feature = "utf8"))]
 use alloc::string::String;
@@ -59,4 +63,36 @@ pub fn cast_ptr<T: ?Sized, U>(p: &T) -> *const U {
 
 pub fn cast_ptr_mut<T: ?Sized, U>(p: &mut T) -> *mut U {
     <*mut T>::cast(p)
+}
+
+/// [`Box::new_uninit`](Box::new_uninit)
+///
+/// See <https://github.com/rust-lang/rust/issues/63291>
+#[cfg_attr(docsrs, doc(cfg(feature = "alloc")))]
+#[cfg(feature = "alloc")]
+pub fn box_new_uninit<T>() -> Box<MaybeUninit<T>> {
+    use alloc::alloc::{alloc, handle_alloc_error};
+    use core::alloc::Layout;
+
+    let layout = Layout::new::<T>();
+    unsafe {
+        let ptr = alloc(layout);
+        if ptr.is_null() {
+            handle_alloc_error(layout)
+        }
+        Box::from_raw(ptr.cast())
+    }
+}
+
+/// [`Box::assume_init`](Box::assume_init)
+///
+/// See <https://github.com/rust-lang/rust/issues/63291>
+///
+/// # Safety
+/// See [`Box::assume_init`](Box::assume_init)
+#[cfg_attr(docsrs, doc(cfg(feature = "alloc")))]
+#[cfg(feature = "alloc")]
+pub unsafe fn box_assume_init<T>(b: Box<MaybeUninit<T>>) -> Box<T> {
+    let ptr = Box::into_raw(b).cast::<T>();
+    Box::from_raw(ptr)
 }
