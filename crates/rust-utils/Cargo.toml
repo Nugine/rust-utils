@@ -1,6 +1,6 @@
 [package]
 name = "nugine-rust-utils"
-version = "0.1.4-dev"
+version = "0.1.4"
 edition = "2021"
 description = "Nugine's personal Rust utilities"
 license = "MIT"
