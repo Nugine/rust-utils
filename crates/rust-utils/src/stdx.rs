@@ -74,9 +74,34 @@ pub fn box_new_uninit<T>() -> Box<MaybeUninit<T>> {
     use alloc::alloc::{alloc, handle_alloc_error};
     use core::alloc::Layout;
 
+    // TODO: inline_const
+    assert!(core::mem::size_of::<T>() != 0);
+
     let layout = Layout::new::<T>();
     unsafe {
         let ptr = alloc(layout);
+        if ptr.is_null() {
+            handle_alloc_error(layout)
+        }
+        Box::from_raw(ptr.cast())
+    }
+}
+
+/// [`Box::new_zeroed`](Box::new_zeroed)
+///
+/// See <https://github.com/rust-lang/rust/issues/63291>
+#[cfg_attr(docsrs, doc(cfg(feature = "alloc")))]
+#[cfg(feature = "alloc")]
+pub fn box_new_zeroed<T>() -> Box<MaybeUninit<T>> {
+    use alloc::alloc::{alloc_zeroed, handle_alloc_error};
+    use core::alloc::Layout;
+
+    // TODO: inline_const
+    assert!(core::mem::size_of::<T>() != 0);
+
+    let layout = Layout::new::<T>();
+    unsafe {
+        let ptr = alloc_zeroed(layout);
         if ptr.is_null() {
             handle_alloc_error(layout)
         }
