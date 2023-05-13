@@ -10,10 +10,15 @@ repository = "https://github.com/Nugine/rust-utils"
 name = "rust_utils"
 
 [features]
-default = []
-std = ["alloc"]
+default = ["std"]
+std = ["alloc", "simdutf8?/std"]
 alloc = []
+ascii = []
+utf8 = ["dep:simdutf8"]
 
 [package.metadata.docs.rs]
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
+
+[dependencies]
+simdutf8 = { version = "0.1.4", default-features = false, optional = true }

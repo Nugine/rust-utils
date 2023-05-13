@@ -7,11 +7,5 @@ extern crate alloc;
 #[macro_use]
 mod macros;
 
-mod core_;
-pub use self::core_::*;
-
-#[cfg(feature = "alloc")]
-cfg_group! {
-    mod alloc_;
-    pub use self::alloc_::*;
-}
+mod stdx;
+pub use self::stdx::*;
