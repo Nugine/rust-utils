@@ -15,6 +15,7 @@ mod sealed {
 mod stdx;
 pub use self::stdx::*;
 
+pub mod convert;
 pub mod default;
 pub mod iter;
 pub mod ptr;
