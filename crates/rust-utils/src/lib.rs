@@ -1,5 +1,6 @@
 #![cfg_attr(not(any(test, feature = "std")), no_std)]
 #![cfg_attr(docsrs, feature(doc_cfg))]
+#![deny(clippy::all)]
 
 #[cfg(feature = "alloc")]
 extern crate alloc;
@@ -9,3 +10,7 @@ mod macros;
 
 mod stdx;
 pub use self::stdx::*;
+
+pub mod default;
+pub mod iter;
+pub mod ptr;
