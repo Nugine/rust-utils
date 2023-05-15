@@ -19,3 +19,6 @@ pub mod default;
 pub mod iter;
 pub mod ptr;
 pub mod slice;
+
+#[cfg(feature = "alloc")]
+pub mod vec;

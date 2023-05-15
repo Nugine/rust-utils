@@ -8,6 +8,7 @@ test:
     cargo test -p nugine-rust-utils --no-default-features --features alloc
     cargo test -p nugine-rust-utils --no-default-features --features std
     cargo test -p nugine-rust-utils --all-features
+    cargo +nightly miri test -p nugine-rust-utils --all-features
 
 doc:
     RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --no-deps --open --all-features
