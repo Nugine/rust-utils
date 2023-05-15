@@ -8,9 +8,14 @@ extern crate alloc;
 #[macro_use]
 mod macros;
 
+mod sealed {
+    pub trait Sealed {}
+}
+
 mod stdx;
 pub use self::stdx::*;
 
 pub mod default;
 pub mod iter;
 pub mod ptr;
+pub mod slice;
