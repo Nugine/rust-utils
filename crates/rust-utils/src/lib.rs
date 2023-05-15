@@ -18,6 +18,7 @@ pub use self::stdx::*;
 pub mod default;
 pub mod iter;
 pub mod ptr;
+pub mod result;
 pub mod slice;
 
 #[cfg(feature = "alloc")]
