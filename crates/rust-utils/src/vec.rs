@@ -5,6 +5,10 @@ use core::ptr;
 
 pub trait VecExt<T>: Sealed {
     fn insert_vec(&mut self, index: usize, other: Vec<T>);
+
+    fn remove_if<F>(&mut self, f: F)
+    where
+        F: FnMut(&mut T) -> bool;
 }
 
 impl<T> Sealed for Vec<T> {}
@@ -28,6 +32,13 @@ impl<T> VecExt<T> for Vec<T> {
             v.set_len(0);
             self.set_len(len + additional);
         }
+    }
+
+    fn remove_if<F>(&mut self, mut f: F)
+    where
+        F: FnMut(&mut T) -> bool,
+    {
+        self.retain_mut(|x| !f(x))
     }
 }
 
