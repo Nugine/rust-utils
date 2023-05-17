@@ -12,15 +12,13 @@ mod sealed {
     pub trait Sealed {}
 }
 
-mod stdx;
-pub use self::stdx::*;
-
 pub mod convert;
 pub mod default;
 pub mod iter;
 pub mod ptr;
 pub mod result;
 pub mod slice;
+pub mod str;
 
 #[cfg(feature = "alloc")]
 cfg_group! {
@@ -29,4 +27,7 @@ cfg_group! {
 
     #[cfg_attr(docsrs, doc(cfg(feature = "alloc")))]
     pub mod vec;
+
+    #[cfg_attr(docsrs, doc(cfg(feature = "alloc")))]
+    pub mod string;
 }
