@@ -14,7 +14,7 @@ doc:
     RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --no-deps --open --all-features
 
 sync-version:
-    cargo set-version   -p nugine-rust-utils      0.2.1-dev
+    cargo set-version   -p nugine-rust-utils      0.2.1
 
 publish:
-    # cargo publish       -p nugine-rust-utils
+    cargo publish       -p nugine-rust-utils
