@@ -23,4 +23,10 @@ pub mod result;
 pub mod slice;
 
 #[cfg(feature = "alloc")]
-pub mod vec;
+cfg_group! {
+    #[cfg_attr(docsrs, doc(cfg(feature = "alloc")))]
+    pub mod boxed;
+
+    #[cfg_attr(docsrs, doc(cfg(feature = "alloc")))]
+    pub mod vec;
+}
