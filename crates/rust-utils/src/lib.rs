@@ -10,11 +10,14 @@ mod macros;
 
 mod sealed {
     pub trait Sealed {}
+
+    pub struct Internal {}
 }
 
 pub mod convert;
 pub mod default;
 pub mod iter;
+pub mod mem;
 pub mod ptr;
 pub mod result;
 pub mod slice;
