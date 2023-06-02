@@ -2,12 +2,15 @@ dev:
     cargo fmt
     cargo clippy
     just test
+    just miri
 
 test:
     cargo test -p nugine-rust-utils --no-default-features 
     cargo test -p nugine-rust-utils --no-default-features --features alloc
     cargo test -p nugine-rust-utils --no-default-features --features std
     cargo test -p nugine-rust-utils --all-features
+
+miri:
     cargo +nightly miri test -p nugine-rust-utils --all-features
 
 doc:

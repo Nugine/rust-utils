@@ -14,21 +14,17 @@ name: CI
 jobs:
   develop:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        toolchain: 
-          - stable
-          - nightly
     steps:
       - uses: actions/checkout@v3
-      - uses: dtolnay/rust-toolchain@master
+      - uses: dtolnay/rust-toolchain@nightly
         with:
-          toolchain: ${{ matrix.toolchain }}
-          components: rustfmt, clippy
+          components: rustfmt, clippy, miri
       - uses: taiki-e/install-action@v2
         with:
           tool: just
       - run: cargo fmt --all -- --check
       - run: cargo clippy -- -D warnings
+      - run: just test
+      - run: just miri
+      - uses: dtolnay/rust-toolchain@stable
       - run: just test
