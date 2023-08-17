@@ -1,0 +1,12 @@
+[package]
+name = "asc"
+version = "0.1.1"
+edition = "2021"
+description = "Atomic Strong Count"
+license.workspace = true
+repository.workspace = true
+keywords = ["arc", "ffi", "sync", "data-structure"]
+categories = ["concurrency", "data-structures"]
+
+[dependencies]
+serde = { version = "1.0.137", optional = true, default-features = false }

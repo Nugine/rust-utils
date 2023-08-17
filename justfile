@@ -14,9 +14,12 @@ test:
     cargo test -p bool-logic
     cargo test -p codegen-cfg
     cargo test -p codegen-libc
+    
+    cargo test -p asc
 
 miri:
     cargo +nightly miri test -p nugine-rust-utils --all-features
+    cargo +nightly miri test -p asc
 
 doc:
     RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --no-deps --open --all-features
@@ -27,6 +30,7 @@ sync-version:
     cargo set-version   -p bool-logic           0.2.0
     cargo set-version   -p codegen-cfg          0.2.0
     cargo set-version   -p codegen-libc         0.2.1
+    cargo set-version   -p asc                  0.1.1
 
 publish:
     # cargo publish       -p nugine-rust-utils
@@ -34,6 +38,7 @@ publish:
     # cargo publish       -p bool-logic
     # cargo publish       -p codegen-cfg      
     # cargo publish       -p codegen-libc     
+    # cargo publish       -p asc
 
 codegen-libc *ARGS:
     #!/bin/bash -e
