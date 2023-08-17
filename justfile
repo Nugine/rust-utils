@@ -1,13 +1,20 @@
 dev:
     cargo fmt
     cargo clippy
-    cargo test
+    just test
+    just miri
+
+test:
+    cd crates/rust-utils && just test
+
+miri:
+    cd crates/rust-utils && just miri
 
 doc:
-    cargo doc --no-deps --open
+    RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --no-deps --open --all-features
 
 sync-version:
-    cargo set-version -p nugine-rust-utils 0.1.0-dev
+    cargo set-version   -p nugine-rust-utils      0.3.1
 
 publish:
-    cargo publish -p nugine-rust-utils
+    cargo publish       -p nugine-rust-utils
