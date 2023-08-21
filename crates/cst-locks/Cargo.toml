@@ -1,0 +1,16 @@
+[package]
+name = "cst-locks"
+version = "0.1.0"
+edition = "2021"
+description = "Consistent locks"
+keywords = ["mutex", "rwlock", "lock", "sync", "data-structure"]
+categories = ["concurrency", "data-structures"]
+license.workspace = true
+repository.workspace = true
+
+[features]
+default = ["asc", "parking_lot"]
+
+[dependencies]
+asc = { version = "0.1.0", optional = true }
+parking_lot = { version = "0.12.0", optional = true }

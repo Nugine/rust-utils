@@ -1,8 +1,11 @@
 dev:
-    cargo fmt
-    cargo clippy
+    just check
     just test
     just miri
+
+check:
+    cargo fmt
+    cargo clippy
 
 test:
     cargo test -p nugine-rust-utils --no-default-features 
@@ -16,10 +19,12 @@ test:
     cargo test -p codegen-libc
     
     cargo test -p asc
+    cargo test -p cst-locks
 
 miri:
     cargo +nightly miri test -p nugine-rust-utils --all-features
     cargo +nightly miri test -p asc
+    cargo +nightly miri test -p cst-locks
 
 doc:
     RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --no-deps --open --all-features
@@ -31,6 +36,7 @@ sync-version:
     cargo set-version   -p codegen-cfg          0.2.0
     cargo set-version   -p codegen-libc         0.2.1
     cargo set-version   -p asc                  0.1.1
+    cargo set-version   -p cst-locks            0.1.0
 
 publish:
     # cargo publish       -p nugine-rust-utils
@@ -39,6 +45,7 @@ publish:
     # cargo publish       -p codegen-cfg      
     # cargo publish       -p codegen-libc     
     # cargo publish       -p asc
+    # cargo publish       -p cst-locks
 
 codegen-libc *ARGS:
     #!/bin/bash -e
