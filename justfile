@@ -24,6 +24,7 @@ test:
     cargo test -p wgp
 
     cargo test -p numeric_cast
+    cargo test -p transform-stream
 
 miri:
     cargo +nightly miri test -p nugine-rust-utils --all-features
@@ -31,6 +32,7 @@ miri:
     # cargo +nightly miri test -p cst-locks
     cargo +nightly miri test -p ordered-vecmap
     MIRIFLAGS='-Zmiri-disable-isolation' cargo +nightly miri test -p wgp
+    cargo +nightly miri test -p transform-stream
 
 doc:
     RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --no-deps --open --all-features
@@ -46,6 +48,7 @@ sync-version:
     cargo set-version   -p ordered-vecmap       0.2.0
     cargo set-version   -p wgp                  0.3.0
     cargo set-version   -p numeric_cast         0.2.1
+    cargo set-version   -p transform-stream     0.3.0
 
 publish:
     # cargo publish     -p nugine-rust-utils
@@ -58,6 +61,7 @@ publish:
     # cargo publish     -p ordered-vecmap
     # cargo publish     -p wgp
     # cargo publish     -p numeric_cast
+    # cargo publish     -p transform-stream
 
 codegen-libc *ARGS:
     #!/bin/bash -e
