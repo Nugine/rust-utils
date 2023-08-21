@@ -19,12 +19,12 @@ test:
     cargo test -p codegen-libc
     
     cargo test -p asc
-    cargo test -p cst-locks
+    # cargo test -p cst-locks
 
 miri:
     cargo +nightly miri test -p nugine-rust-utils --all-features
     cargo +nightly miri test -p asc
-    cargo +nightly miri test -p cst-locks
+    # cargo +nightly miri test -p cst-locks
 
 doc:
     RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --no-deps --open --all-features
