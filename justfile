@@ -20,11 +20,13 @@ test:
     
     cargo test -p asc
     # cargo test -p cst-locks
+    cargo test -p ordered-vecmap
 
 miri:
     cargo +nightly miri test -p nugine-rust-utils --all-features
     cargo +nightly miri test -p asc
     # cargo +nightly miri test -p cst-locks
+    cargo +nightly miri test -p ordered-vecmap
 
 doc:
     RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --no-deps --open --all-features
@@ -37,6 +39,7 @@ sync-version:
     cargo set-version   -p codegen-libc         0.2.1
     cargo set-version   -p asc                  0.1.1
     cargo set-version   -p cst-locks            0.2.0
+    cargo set-version   -p ordered-vecmap       0.2.0
 
 publish:
     # cargo publish       -p nugine-rust-utils
@@ -46,6 +49,7 @@ publish:
     # cargo publish       -p codegen-libc     
     # cargo publish       -p asc
     # cargo publish       -p cst-locks
+    # cargo publish       -p ordered-vecmap
 
 codegen-libc *ARGS:
     #!/bin/bash -e
