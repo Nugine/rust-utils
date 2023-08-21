@@ -22,6 +22,8 @@ test:
     # cargo test -p cst-locks
     cargo test -p ordered-vecmap
 
+    cargo test -p numeric_cast
+
 miri:
     cargo +nightly miri test -p nugine-rust-utils --all-features
     cargo +nightly miri test -p asc
@@ -40,6 +42,7 @@ sync-version:
     cargo set-version   -p asc                  0.1.1
     cargo set-version   -p cst-locks            0.2.0
     cargo set-version   -p ordered-vecmap       0.2.0
+    cargo set-version   -p numeric_cast         0.2.1
 
 publish:
     # cargo publish       -p nugine-rust-utils
@@ -50,6 +53,7 @@ publish:
     # cargo publish       -p asc
     # cargo publish       -p cst-locks
     # cargo publish       -p ordered-vecmap
+    # cargo publish       -p numeric_cast
 
 codegen-libc *ARGS:
     #!/bin/bash -e
