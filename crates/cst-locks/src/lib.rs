@@ -11,14 +11,9 @@ use std::ptr;
 use std::ptr::NonNull;
 use std::sync::atomic::AtomicUsize;
 use std::sync::atomic::Ordering::*;
+use std::sync::Arc;
 use std::thread;
 use std::thread::Thread;
-
-#[cfg(feature = "asc")]
-use asc::Asc;
-
-#[cfg(not(feature = "asc"))]
-use std::sync::Arc as Asc;
 
 #[cfg(feature = "parking_lot")]
 use parking_lot::Mutex;
@@ -379,16 +374,16 @@ impl<T> Inner<T> {
 }
 
 pub struct CstMutex<T> {
-    inner: Asc<Inner<T>>,
+    inner: Arc<Inner<T>>,
 }
 
 pub struct CstMutexPermit<T> {
-    inner: Asc<Inner<T>>,
+    inner: Arc<Inner<T>>,
     entry: NonNull<Entry>,
 }
 
 pub struct CstMutexGuard<T> {
-    inner: Asc<Inner<T>>,
+    inner: Arc<Inner<T>>,
     entry: NonNull<Entry>,
 }
 
@@ -405,7 +400,7 @@ impl<T> CstMutex<T> {
     #[inline]
     #[must_use]
     pub fn new(val: T) -> Self {
-        let inner = Asc::<Inner<T>>::new(Inner {
+        let inner = Arc::<Inner<T>>::new(Inner {
             link: Link::dangling(),
             meta: Mutex::new(Meta {
                 active: 0,
@@ -424,7 +419,7 @@ impl<T> CstMutex<T> {
     #[inline]
     #[must_use]
     pub fn acquire(&self) -> CstMutexPermit<T> {
-        let inner = Asc::clone(&self.inner);
+        let inner = Arc::clone(&self.inner);
         let entry = self.inner.acquire();
         CstMutexPermit { inner, entry }
     }

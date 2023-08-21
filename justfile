@@ -36,7 +36,7 @@ sync-version:
     cargo set-version   -p codegen-cfg          0.2.0
     cargo set-version   -p codegen-libc         0.2.1
     cargo set-version   -p asc                  0.1.1
-    cargo set-version   -p cst-locks            0.1.0
+    cargo set-version   -p cst-locks            0.2.0
 
 publish:
     # cargo publish       -p nugine-rust-utils
