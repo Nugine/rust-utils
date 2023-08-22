@@ -1,67 +1,66 @@
+# ----- shared recipes -----
+
+[no-cd]
 dev:
     just check
     just test
     just miri
 
+[no-cd]
+doc:
+    RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --no-deps --open --all-features
+
+[no-cd]
 check:
     cargo fmt
     cargo clippy
 
+# ----- workspace recipes -----
+
 test:
-    cargo test -p nugine-rust-utils --no-default-features 
-    cargo test -p nugine-rust-utils --no-default-features --features alloc
-    cargo test -p nugine-rust-utils --no-default-features --features std
-    cargo test -p nugine-rust-utils --all-features
-
-    cargo test -p codegen-writer
-    cargo test -p bool-logic
-    cargo test -p codegen-cfg
-    cargo test -p codegen-libc
-    
-    cargo test -p asc
-    # cargo test -p cst-locks
-    cargo test -p ordered-vecmap
-    cargo test -p wgp
-
-    cargo test -p numeric_cast
-    cargo test -p transform-stream
+    #!/bin/bash -ex
+    for c in `ls crates`; do
+        pushd crates/$c
+            just test
+        popd
+    done
 
 miri:
-    cargo +nightly miri test -p nugine-rust-utils --all-features
-    cargo +nightly miri test -p asc
-    # cargo +nightly miri test -p cst-locks
-    cargo +nightly miri test -p ordered-vecmap
-    MIRIFLAGS='-Zmiri-disable-isolation' cargo +nightly miri test -p wgp
-    cargo +nightly miri test -p transform-stream
+    #!/bin/bash -ex
+    for c in `ls crates`; do
+        pushd crates/$c
+            just miri
+        popd
+    done
 
-doc:
-    RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --no-deps --open --all-features
 
 sync-version:
-    cargo set-version   -p nugine-rust-utils    0.3.1
-    cargo set-version   -p codegen-writer       0.2.0
+    cargo set-version   -p asc                  0.1.1
     cargo set-version   -p bool-logic           0.2.0
     cargo set-version   -p codegen-cfg          0.2.0
     cargo set-version   -p codegen-libc         0.2.1
-    cargo set-version   -p asc                  0.1.1
+    cargo set-version   -p codegen-writer       0.2.0
     cargo set-version   -p cst-locks            0.2.0
-    cargo set-version   -p ordered-vecmap       0.2.0
-    cargo set-version   -p wgp                  0.3.0
+    cargo set-version   -p nugine-rust-utils    0.3.1
     cargo set-version   -p numeric_cast         0.2.1
+    cargo set-version   -p ordered-vecmap       0.2.0
     cargo set-version   -p transform-stream     0.3.0
+    cargo set-version   -p wgp                  0.3.0
 
 publish:
-    # cargo publish     -p nugine-rust-utils
-    # cargo publish     -p codegen-writer   
-    # cargo publish     -p bool-logic
-    # cargo publish     -p codegen-cfg      
-    # cargo publish     -p codegen-libc     
-    # cargo publish     -p asc
-    # cargo publish     -p cst-locks
-    # cargo publish     -p ordered-vecmap
-    # cargo publish     -p wgp
-    # cargo publish     -p numeric_cast
-    # cargo publish     -p transform-stream
+    # cargo publish     -p asc                  
+    # cargo publish     -p bool-logic           
+    # cargo publish     -p codegen-cfg          
+    # cargo publish     -p codegen-libc         
+    # cargo publish     -p codegen-writer       
+    # cargo publish     -p cst-locks            
+    # cargo publish     -p nugine-rust-utils    
+    # cargo publish     -p numeric_cast         
+    # cargo publish     -p ordered-vecmap       
+    # cargo publish     -p transform-stream     
+    # cargo publish     -p wgp                  
+
+# ----- special recipes -----
 
 codegen-libc *ARGS:
     #!/bin/bash -e

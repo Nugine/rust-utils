@@ -1,0 +1,10 @@
+set fallback
+
+test:
+    cargo test --no-default-features 
+    cargo test --no-default-features --features alloc
+    cargo test --no-default-features --features std
+    cargo test --all-features
+
+miri:
+    cargo +nightly miri test --all-features
