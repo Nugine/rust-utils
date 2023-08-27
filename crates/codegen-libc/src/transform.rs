@@ -1,7 +1,6 @@
 use codegen_cfg::ast::*;
 use codegen_cfg::bool_logic::transform::*;
 use codegen_cfg::bool_logic::visit_mut::*;
-use log::debug;
 use rust_utils::iter::filter_map_collect_vec;
 use rust_utils::iter::map_collect_vec;
 use rust_utils::vec::VecExt;
@@ -9,6 +8,7 @@ use rust_utils::vec::VecExt;
 use std::cmp::Ordering::{self, *};
 use std::mem;
 
+use log::debug;
 use log::trace;
 
 pub fn simplified_expr(x: impl Into<Expr>) -> Expr {
@@ -179,7 +179,7 @@ impl VisitMut<Pred> for SimplifyTargetFamily {
 struct ImplyByKey;
 
 impl ImplyByKey {
-    const UNIQUE_VALUED_KEYS: &[&'static str] = &[
+    const UNIQUE_VALUED_KEYS: &'static [&'static str] = &[
         "target_family",
         "target_arch",
         "target_vendor",
