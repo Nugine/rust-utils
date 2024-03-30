@@ -51,6 +51,18 @@ truncating_cast!(u128 => u16 );
 truncating_cast!(u64  => u32 );
 truncating_cast!(u128 => u32 );
 truncating_cast!(u128 => u64 );
+
+truncating_cast!(usize => u8    );
+truncating_cast!(usize => u16   );
+truncating_cast!(usize => u32   );
+truncating_cast!(usize => u64   );
+truncating_cast!(usize => u128  );
+truncating_cast!(u8    => usize );
+truncating_cast!(u16   => usize );
+truncating_cast!(u32   => usize );
+truncating_cast!(u64   => usize );
+truncating_cast!(u128  => usize );
+
 truncating_cast!(i16  => i8  );
 truncating_cast!(i32  => i8  );
 truncating_cast!(i64  => i8  );
@@ -61,6 +73,17 @@ truncating_cast!(i128 => i16 );
 truncating_cast!(i64  => i32 );
 truncating_cast!(i128 => i32 );
 truncating_cast!(i128 => i64 );
+
+truncating_cast!(isize => i8    );
+truncating_cast!(isize => i16   );
+truncating_cast!(isize => i32   );
+truncating_cast!(isize => i64   );
+truncating_cast!(isize => i128  );
+truncating_cast!(i8    => isize );
+truncating_cast!(i16   => isize );
+truncating_cast!(i32   => isize );
+truncating_cast!(i64   => isize );
+truncating_cast!(i128  => isize );
 
 #[cfg(test)]
 mod tests {
