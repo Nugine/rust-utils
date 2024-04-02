@@ -51,6 +51,7 @@ extending_cast!(u16 => u128 );
 extending_cast!(u32 => u64  );
 extending_cast!(u32 => u128 );
 extending_cast!(u64 => u128 );
+
 extending_cast!(i8  => i16  );
 extending_cast!(i8  => i32  );
 extending_cast!(i8  => i64  );
@@ -61,6 +62,16 @@ extending_cast!(i16 => i128 );
 extending_cast!(i32 => i64  );
 extending_cast!(i32 => i128 );
 extending_cast!(i64 => i128 );
+
+extending_cast!(u8    => usize);
+extending_cast!(u16   => usize);
+extending_cast!(usize => u64  );
+extending_cast!(usize => u128 );
+
+extending_cast!(i8    => isize);
+extending_cast!(i16   => isize);
+extending_cast!(isize => i64  );
+extending_cast!(isize => i128 );
 
 #[cfg(test)]
 mod tests {
