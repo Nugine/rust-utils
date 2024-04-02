@@ -9,9 +9,7 @@ fn nop() {
     block_on(async {
         let s = stream! {};
         pin_mut!(s);
-        while let Some(()) = s.next().await {
-            unreachable!()
-        }
+        assert_eq!(s.next().await, <Option<()>>::None);
     });
 
     block_on(async {
@@ -24,9 +22,7 @@ fn nop() {
                 }
             };
             pin_mut!(s);
-            while let Some(()) = s.next().await {
-                unreachable!()
-            }
+            assert_eq!(s.next().await, <Option<()>>::None);
         }
         assert!(flag);
     })

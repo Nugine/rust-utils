@@ -36,7 +36,7 @@ impl io::Write for Codegen {
 }
 
 thread_local! {
-    static CURRENT: RefCell<Option<Codegen>> = RefCell::new(None);
+    static CURRENT: RefCell<Option<Codegen>> = const { RefCell::new(None) };
 }
 
 pub fn scoped(g: Codegen, f: impl FnOnce()) -> Codegen {
