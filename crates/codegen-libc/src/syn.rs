@@ -221,11 +221,11 @@ pub fn find_cfg_mod(ast: &File) -> Vec<(CfgExpr, Ident)> {
     find_mod.ans
 }
 
-#[derive(Debug)]
-pub struct CfgMod {
-    pub cfg: Option<CfgExpr>,
-    pub name: Ident,
-}
+// #[derive(Debug)]
+// pub struct CfgMod {
+//     pub cfg: Option<CfgExpr>,
+//     pub name: Ident,
+// }
 
 struct FindMods {
     ans: Vec<(CfgExpr, Ident)>,

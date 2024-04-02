@@ -257,7 +257,7 @@ unsafe impl<T> AsOut<[T]> for [MaybeUninit<T>] {
 mod tests {
     use super::*;
 
-    use core::{mem, ptr};
+    use core::mem;
 
     unsafe fn raw_fill_copied<T: Copy>(dst: *mut T, len: usize, val: T) {
         if mem::size_of::<T>() == 0 {

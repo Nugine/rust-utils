@@ -139,7 +139,7 @@ impl<T: ?Sized> Asc<T> {
     #[inline]
     #[must_use]
     pub fn ptr_eq(this: &Self, other: &Self) -> bool {
-        this.inner == other.inner
+        ptr::eq(this.inner.as_ptr(), other.inner.as_ptr())
     }
 
     #[inline]

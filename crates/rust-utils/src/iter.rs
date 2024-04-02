@@ -1,4 +1,4 @@
-#[cfg(feature = "alloc")]
+#[cfg(all(feature = "alloc", not(any(test, feature = "std"))))]
 use alloc::vec::Vec;
 
 pub fn map_collect<C, T, I, F>(iterable: I, f: F) -> C
