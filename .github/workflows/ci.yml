@@ -36,5 +36,5 @@ jobs:
           tool: just
       - uses: dtolnay/rust-toolchain@stable
       - run: just test
-      - uses: dtolnay/rust-toolchain@1.71.1
+      - uses: dtolnay/rust-toolchain@1.74.0
       - run: just test
