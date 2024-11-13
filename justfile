@@ -35,7 +35,6 @@ miri:
 
 
 sync-version:
-    cargo set-version   -p asc                  0.1.1
     cargo set-version   -p bool-logic           0.2.0
     cargo set-version   -p codegen-cfg          0.2.0
     cargo set-version   -p codegen-libc         0.2.1
@@ -49,7 +48,6 @@ sync-version:
     cargo set-version   -p wgp                  0.3.0
 
 publish:
-    # cargo publish     -p asc                  
     # cargo publish     -p bool-logic           
     # cargo publish     -p codegen-cfg          
     # cargo publish     -p codegen-libc         
