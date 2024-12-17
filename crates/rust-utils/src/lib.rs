@@ -19,7 +19,6 @@ pub mod default;
 pub mod iter;
 pub mod mem;
 pub mod ptr;
-pub mod result;
 pub mod slice;
 pub mod str;
 
