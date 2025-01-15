@@ -41,7 +41,6 @@ sync-version:
     cargo set-version   -p codegen-writer       0.2.0
     cargo set-version   -p cst-locks            0.2.0
     cargo set-version   -p nugine-rust-utils    0.3.1
-    cargo set-version   -p numeric_cast         0.2.1
     cargo set-version   -p ordered-vecmap       0.2.0
     cargo set-version   -p outref               0.5.1
     cargo set-version   -p transform-stream     0.3.0
@@ -54,7 +53,6 @@ publish:
     # cargo publish     -p codegen-writer       
     # cargo publish     -p cst-locks            
     # cargo publish     -p nugine-rust-utils    
-    # cargo publish     -p numeric_cast         
     # cargo publish     -p ordered-vecmap       
     # cargo publish     -p outref
     # cargo publish     -p transform-stream     
