@@ -42,7 +42,6 @@ sync-version:
     cargo set-version   -p cst-locks            0.2.0
     cargo set-version   -p nugine-rust-utils    0.3.1
     cargo set-version   -p ordered-vecmap       0.2.0
-    cargo set-version   -p transform-stream     0.3.0
     cargo set-version   -p wgp                  0.3.0
 
 publish:
@@ -53,7 +52,6 @@ publish:
     # cargo publish     -p cst-locks            
     # cargo publish     -p nugine-rust-utils    
     # cargo publish     -p ordered-vecmap       
-    # cargo publish     -p transform-stream     
     # cargo publish     -p wgp                  
 
 # ----- special recipes -----
