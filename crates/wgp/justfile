@@ -1,4 +1,0 @@
-set fallback
-
-miri:
-    MIRIFLAGS='-Zmiri-disable-isolation' cargo +nightly miri test
