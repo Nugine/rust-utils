@@ -1,4 +1,0 @@
-set fallback
-
-miri:
-    echo "miri skipped"
