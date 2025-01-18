@@ -40,7 +40,6 @@ sync-version:
     cargo set-version   -p codegen-libc         0.2.1
     cargo set-version   -p codegen-writer       0.2.0
     cargo set-version   -p nugine-rust-utils    0.3.1
-    cargo set-version   -p ordered-vecmap       0.2.0
 
 publish:
     # cargo publish     -p bool-logic           
@@ -48,7 +47,6 @@ publish:
     # cargo publish     -p codegen-libc         
     # cargo publish     -p codegen-writer       
     # cargo publish     -p nugine-rust-utils    
-    # cargo publish     -p ordered-vecmap       
 
 # ----- special recipes -----
 
