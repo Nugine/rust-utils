@@ -1,7 +1,0 @@
-[package]
-name = "codegen-writer"
-version = "0.2.0"
-edition = "2021"
-description = "A codegen tool for writing code files"
-license.workspace = true
-repository.workspace = true
